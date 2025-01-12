@@ -7,7 +7,6 @@ import com.petproject.numbergenerateservice.model.GeneratedNumber;
 import com.petproject.numbergenerateservice.repository.GeneratedNumberRepository;
 import com.petproject.numbergenerateservice.service.GeneratedNumberService;
 import com.petproject.numbergenerateservice.util.ExceptionMessage;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Random;
@@ -42,7 +41,7 @@ public class GeneratedNumberServiceImpl implements GeneratedNumberService {
                 number = random.nextInt(MAX_NUMBERS);
             }
             todayNumbers.add(number);
-            return String.format("%05d", number);
+            return String.format("%06d", number);
         } else {
             throw new InsufficientStorageException(ExceptionMessage.INSUFFICIENT_STORAGE_ERROR.getDescription());
         }
