@@ -15,6 +15,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+/**
+ * Реализация интерфейса генерации номера заказа.
+ *
+ * @author Egor Nazarev
+ */
 @Service
 @RequiredArgsConstructor
 public class GeneratedNumberServiceImpl implements GeneratedNumberService {
@@ -25,6 +30,10 @@ public class GeneratedNumberServiceImpl implements GeneratedNumberService {
     private Set<Integer> todayNumbers = new HashSet<>();
     private final Integer MAX_NUMBERS = 1_000_000;
 
+    /**
+     * Реализация метода для генерации номера заказа.
+     * @return Dto со сгенерированным номером заказа.
+     */
     @Override
     public GeneratedNumberDto generateNumber() {
         GeneratedNumberDto generatedNumberDto = new GeneratedNumberDto(generateRandomNumber() + LocalDate.now().toString().replace("-",""));
@@ -33,6 +42,10 @@ public class GeneratedNumberServiceImpl implements GeneratedNumberService {
         return generatedNumberDto;
     }
 
+    /**
+     * Метод генерирует уникальное случайное число от 0 до 999 999.
+     * @return сгенерированное число в формате строки длинной в 6 символов.
+     */
     private String generateRandomNumber(){
         if(todayNumbers.size() < MAX_NUMBERS) {
             Random random = new Random();
@@ -47,9 +60,11 @@ public class GeneratedNumberServiceImpl implements GeneratedNumberService {
         }
     }
 
+    /**
+     * Метод, очищающий список сгенерированных чисел ежедневно.
+     */
     @Scheduled(cron = "@daily")
     private void clearNumbersDaily(){
         todayNumbers.clear();
     }
-
 }

@@ -3,6 +3,12 @@ package com.petproject.numbergenerateservice.util;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * Описание сообщений об ошибках в исключениях.
+ * Определяет текстовые сообщения для различных исключительных ситуаций.
+ *
+ * @author Egor Nazarev
+ */
 @Getter
 @AllArgsConstructor
 public enum ExceptionMessage {

@@ -6,6 +6,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+/**
+ * Сущность, описывающая номер заказа
+ *
+ * @author Egor Nazarev
+ */
 @Data
 @Document (collection = "order_numbers")
 public class GeneratedNumber {
